@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:dio/dio.dart';
 import 'package:movie_app/core/network/api_constances.dart';
 // import 'package:movie_app/core/error/exception.dart';
@@ -27,6 +29,8 @@ class MovieRemoteDataSource extends BaseMovieRemoteDataSource {
   Future<List<MovieModel>> getPopularMovies() async {
     final response = await Dio().get(ApiConstances.popularMoviesPath);
     if (response.statusCode == 200) {
+      // log((response.data["results"])
+      //     .map((e) => MovieModel.fromJson(e).toString()));
       return List<MovieModel>.from((response.data["results"] as List).map(
         (e) => MovieModel.fromJson(e),
       ));

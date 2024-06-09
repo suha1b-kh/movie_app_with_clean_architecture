@@ -4,8 +4,8 @@ class Movie {
   final String backDropath;
   final List<int> genreIds;
   final String overView;
-  final double voteAvg;
-  final double releaseDate;
+  final num voteAvg;
+  final String releaseDate;
 
   const Movie({
     required this.id,
