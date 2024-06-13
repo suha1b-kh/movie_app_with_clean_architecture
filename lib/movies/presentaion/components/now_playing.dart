@@ -13,7 +13,7 @@ import 'package:movie_app/movies/presentaion/controller/movies_state.dart';
 Widget nowPlayingComponent() {
   return BlocBuilder<MoviesBloc, MoviesState>(
     builder: (context, state) {
-      print(state.nowPlayingMovies);
+      print(state.nowPlayingState);
       return FadeIn(
         duration: const Duration(milliseconds: 500),
         child: CarouselSlider(

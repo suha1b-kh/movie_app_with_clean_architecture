@@ -16,14 +16,16 @@ class MoviesBloc extends Bloc<MoviesEvent, MoviesState> {
       // BaseMoviesRepository baseMoviesRepository = MoviesRepository(
       //     baseMovieRemoteDataSource: baseMovieRemoteDataSource);
       final result = await getNowPlayingMoviesUseCase.execute();
-      emit(MoviesState(nowPlayingState: RequestState.loaded));
+      // emit(MoviesState(nowPlayingState: RequestState.loaded));
       result.fold(
           (l) => emit(MoviesState(
                 nowPlayingState: RequestState.error,
                 playingNowMessage: l.message,
               )),
-          (r) => MoviesState(
-              nowPlayingMovies: r, nowPlayingState: RequestState.loaded));
+          (r) => emit(MoviesState(
+                nowPlayingMovies: r,
+                nowPlayingState: RequestState.loaded,
+              )));
     });
   }
 }
